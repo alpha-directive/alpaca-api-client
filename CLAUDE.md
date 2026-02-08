@@ -22,7 +22,7 @@ Elixir OTP application — a client library for the Alpaca Markets API. Uses Mix
 
 **Module structure**:
 
-- `AlpacaAPIClient.Request` — Core HTTP client using Req. Handles authentication (ALPACA-API-KEY-ID/ALPACA-API-SECRET-KEY headers), rate limiting (200 req/min via Hammer), and error handling with tagged tuples (`{:ok, data}` | `{:error, reason}`).
+- `AlpacaAPIClient.Request` — Core HTTP client using Req. Handles authentication (ALPACA-API-KEY-ID/ALPACA-API-SECRET-KEY headers) and error handling with tagged tuples (`{:ok, data}` | `{:error, reason}`).
 - `AlpacaAPIClient.RequestBehaviour` — Behaviour for the HTTP client, enabling test mocking.
 - `AlpacaAPIClient.Utils` — Shared utilities: `maybe_put/3`, `parse_timestamp!/1`, `build_common_params/2`.
 - `AlpacaAPIClient.Pagination` — Shared pagination logic (`fetch_all/4`) for paginated market data endpoints.
@@ -37,7 +37,6 @@ Base URL: `data.alpaca.markets/v2`
 ## Key Dependencies (planned)
 
 - **Req** — HTTP client
-- **Hammer** — rate limiting
 - **Mox** — HTTP mocking in tests
 
 ## Development Phases

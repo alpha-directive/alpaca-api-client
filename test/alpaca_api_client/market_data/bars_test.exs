@@ -11,7 +11,6 @@ defmodule AlpacaAPIClient.MarketData.BarsTest do
       api_secret: "test-secret-key"
     )
 
-    Hammer.delete_buckets("alpaca_api")
     :ok
   end
 

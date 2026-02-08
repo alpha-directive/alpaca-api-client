@@ -3,7 +3,7 @@
 ## 0.1.0
 
 - Initial release
-- Core HTTP client with authentication and rate limiting (200 req/min)
+- Core HTTP client with authentication
 - Historical bars endpoint with auto-pagination and timeframe support
 - Historical trades endpoint with auto-pagination
 - Historical quotes endpoint with auto-pagination

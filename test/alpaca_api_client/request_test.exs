@@ -9,7 +9,6 @@ defmodule AlpacaAPIClient.RequestTest do
       api_secret: "test-secret-key"
     )
 
-    Hammer.delete_buckets("alpaca_api")
     :ok
   end
 
@@ -75,20 +74,6 @@ defmodule AlpacaAPIClient.RequestTest do
     test "returns {:error, {:server_error, 500, _}} on 500" do
       assert {:error, {:server_error, 500, _body}} =
                AlpacaAPIClient.Request.get("/test", plug: &plug_500/1)
-    end
-  end
-
-  describe "rate limiting" do
-    test "returns {:error, :rate_limited} when rate limit is exhausted" do
-      # Exhaust the rate limit bucket completely
-      for _ <- 1..300 do
-        Hammer.check_rate("alpaca_api", 60_000, 200)
-      end
-
-      # Verify bucket is actually exhausted
-      assert {:deny, _} = Hammer.check_rate("alpaca_api", 60_000, 200)
-
-      assert {:error, :rate_limited} = AlpacaAPIClient.Request.get("/test", plug: &plug_200/1)
     end
   end
 end

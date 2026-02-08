@@ -92,10 +92,6 @@ snapshot.daily_bar.volume    # => 82488700
 
 All historical endpoints (bars, trades, quotes) handle pagination automatically, streaming all results across multiple API pages.
 
-## Rate Limiting
-
-The client enforces Alpaca's rate limit of 200 requests per minute using [Hammer](https://github.com/ExHammer/hammer). If the limit is exceeded, requests return `{:error, :rate_limited}`.
-
 ## Error Handling
 
 All functions return tagged tuples:
@@ -105,7 +101,7 @@ All functions return tagged tuples:
 {:error, :unauthorized}            # 401 - Invalid credentials
 {:error, :forbidden}               # 403 - Forbidden
 {:error, :not_found}               # 404 - Not found
-{:error, :rate_limited}            # 429 or local rate limit
+{:error, :rate_limited}            # 429 - Rate limited
 {:error, {:server_error, status, body}}  # 5xx
 {:error, {:request_failed, reason}}      # Network error
 ```
