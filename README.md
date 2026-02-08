@@ -23,8 +23,8 @@ Set your Alpaca API credentials in your application config:
 ```elixir
 # config/config.exs
 config :alpaca_api_client, AlpacaAPIClient.HTTP,
-  api_key: System.get_env("APCA_API_KEY_ID"),
-  api_secret: System.get_env("APCA_API_SECRET_KEY")
+  api_key: System.get_env("ALPACA_API_KEY_ID"),
+  api_secret: System.get_env("ALPACA_API_SECRET_KEY")
 ```
 
 ## Usage
