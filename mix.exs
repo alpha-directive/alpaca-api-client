@@ -30,7 +30,6 @@ defmodule AlpacaAPIClient.MixProject do
   defp deps do
     [
       {:req, "~> 0.5"},
-      {:hammer, "~> 6.2"},
       {:mox, "~> 1.1", only: :test},
       {:plug, "~> 1.16", only: :test},
       {:dialyxir, "~> 1.4", only: [:dev, :test], runtime: false},

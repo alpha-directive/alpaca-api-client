@@ -2,29 +2,16 @@ defmodule AlpacaAPIClient.Request do
   @moduledoc """
   Core HTTP client for the Alpaca Markets API.
 
-  Handles authentication, rate limiting, and error handling.
+  Handles authentication and error handling.
   """
 
   @behaviour AlpacaAPIClient.RequestBehaviour
 
   @base_url "https://data.alpaca.markets/v2"
-  @rate_limit_bucket "alpaca_api"
-  @rate_limit_max 200
-  @rate_limit_window_ms 60_000
 
   @impl true
   def get(path, opts \\ []) do
-    with :ok <- check_rate_limit(),
-         {:ok, response} <- do_request(path, opts) do
-      handle_response(response)
-    end
-  end
-
-  defp check_rate_limit do
-    case Hammer.check_rate(@rate_limit_bucket, @rate_limit_window_ms, @rate_limit_max) do
-      {:allow, _count} -> :ok
-      {:deny, _limit} -> {:error, :rate_limited}
-    end
+    with {:ok, response} <- do_request(path, opts), do: handle_response(response)
   end
 
   defp do_request(path, opts) do
