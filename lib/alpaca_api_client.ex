@@ -86,4 +86,12 @@ defmodule AlpacaAPIClient do
   """
   @spec snapshots(keyword()) :: {:ok, map()} | {:error, term()}
   defdelegate snapshots(opts), to: AlpacaAPIClient.MarketData.Snapshots, as: :get
+
+  @doc """
+  Fetch the market calendar (trading days and hours).
+
+  See `AlpacaAPIClient.Calendar.get/1` for full option details.
+  """
+  @spec calendar(keyword()) :: {:ok, [AlpacaAPIClient.Types.CalendarDay.t()]} | {:error, term()}
+  defdelegate calendar(opts \\ []), to: AlpacaAPIClient.Calendar, as: :get
 end

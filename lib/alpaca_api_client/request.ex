@@ -16,12 +16,12 @@ defmodule AlpacaAPIClient.Request do
 
   defp do_request(path, opts) do
     config = config()
-    url = (config[:base_url] || @base_url) <> path
+    url = (opts[:base_url] || config[:base_url] || @base_url) <> path
     params = opts[:params] || %{}
 
     headers = [
-      {"ALPACA-API-KEY-ID", config[:api_key]},
-      {"ALPACA-API-SECRET-KEY", config[:api_secret]}
+      {"APCA-API-KEY-ID", config[:api_key]},
+      {"APCA-API-SECRET-KEY", config[:api_secret]}
     ]
 
     req_opts =
